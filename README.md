@@ -26,7 +26,7 @@ flowchart LR
 
 O arquivo em `data/raw/menu_items.csv` vem da página pública [Every item on the menu at 50 new restaurants](https://www.248.ai/blog/every-item-on-the-menu-at-50-new-restaurants). A inspeção do CSV encontrou 5.213 linhas e as colunas `restaurant`, `type`, `city`, `state`, `opened`, `section`, `item`, `description`, `price` e `source_url`.
 
-O esquema não possui coluna chamada `cuisine` nem preço numérico. A ingestão usa `type` como culinária e mantém `price` original como texto, extraindo valores numéricos para filtros. Quando há faixa de preço, o limite máximo considera a opção mais barata. Preços ausentes ou textuais sem número ficam fora de buscas com teto de preço. Cada item vira um documento com identificador estável e metadados no Chroma.
+No CSV, a coluna type informa a categoria culinária, e a coluna price contém os preços em texto. Durante a ingestão, o sistema preserva o preço original e extrai valores numéricos para permitir filtros. Quando há uma faixa de preços, o filtro considera o menor valor. Itens sem preço numérico não aparecem em buscas com limite de preço. Cada item é convertido em um documento com identificador estável e metadados, armazenado no Chroma.
 
 ```powershell
 python -m src.ingest
