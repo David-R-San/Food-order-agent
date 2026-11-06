@@ -26,8 +26,7 @@ flowchart LR
 
 The file at `data/raw/menu_items.csv` comes from the public page [Every item on the menu at 50 new restaurants](https://www.248.ai/blog/every-item-on-the-menu-at-50-new-restaurants). The inspected CSV has 5,213 rows and these columns: `restaurant`, `type`, `city`, `state`, `opened`, `section`, `item`, `description`, `price`, and `source_url`.
 
-The schema has no `cuisine` column or numeric price column. Ingestion uses `type` as the cuisine label and preserves the original `price` text while extracting numeric values for filters. For price ranges, the maximum-price filter uses the lowest listed amount. Items with missing or non-numeric prices are excluded from searches with a price cap. Each item becomes a document with a stable ID and Chroma metadata.
-
+In the CSV, `type` identifies the cuisine category, and `price` is stored as text. During ingestion, the system preserves the original price and extracts numeric values for filtering. For price ranges, the filter uses the lowest listed amount. Items without a numeric price are excluded from searches with a price cap. Each item is converted into a document with a stable ID and metadata, then stored in Chroma.
 ```powershell
 python -m src.ingest
 ```
