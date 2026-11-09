@@ -38,7 +38,7 @@ Na primeira execução, o Sentence Transformers baixa o modelo `paraphrase-multi
 
 Requer Python 3.11 ou superior.
 
-Execute os comandos abaixo na raiz do projeto, isto é, na pasta que contém `app.py`. No VS Code, abra o terminal com essa pasta aberta.
+Execute os comandos abaixo na raiz do projeto, isto é, na pasta que contém `app.py`.
 
 Crie o ambiente virtual:
 
